@@ -1,0 +1,50 @@
+{
+  "author": "Jeremy A Gray <jeremy.a.gray@gmail.com> (http://www.grayfarms.org/)",
+  "bugs": {
+    "url": "https://github.com/jeremyagray/fcc-amp-exercise-tracker/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.0",
+    "express-validator": "^6.8.0",
+    "helmet": "^4.2.0",
+    "mongoose": "^5.11.0",
+    "nodemon": "^2.0.0",
+    "pug": "^3.0.0"
+  },
+  "description": "FCC AMP Exercise Tracker Microservice",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.15.0",
+    "jsdoc": "^3.6.0",
+    "mocha": "^8.2.0",
+    "nyc": "^15.1.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "homepage": "https://github.com/jeremyagray/fcc-amp-exercise-tracker",
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "license": "MIT",
+  "main": "server.js",
+  "name": "fcc-amp-exercise-tracker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeremyagray/fcc-amp-exercise-tracker"
+  },
+  "scripts": {
+    "cover": "nyc --reporter=text --reporter=html  mocha --recursive --exit -ui tdd tests/",
+    "docs": "jsdoc -c ./.jsdoc.json",
+    "lint": "eslint '**/*.js'",
+    "lint-fix": "eslint --fix '**/*.js'",
+    "start": "node server.js",
+    "test": "mocha --recursive --exit -ui tdd tests/"
+  },
+  "version": "0.0.1"
+}
