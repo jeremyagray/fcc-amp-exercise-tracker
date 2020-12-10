@@ -43,7 +43,7 @@
     "docs": "jsdoc -c ./.jsdoc.json",
     "lint": "eslint '**/*.js'",
     "lint-fix": "eslint --fix '**/*.js'",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "mocha --recursive --exit -ui tdd tests/"
   },
   "version": "0.0.1"
