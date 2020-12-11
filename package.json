@@ -44,7 +44,7 @@
     "lint": "eslint '**/*.js'",
     "lint-fix": "eslint --fix '**/*.js'",
     "start": "nodemon server.js",
-    "test": "mocha --recursive --exit -ui tdd tests/"
+    "test": "mocha --recursive --exit tests/"
   },
   "version": "0.0.1"
 }

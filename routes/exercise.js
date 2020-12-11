@@ -11,9 +11,9 @@ const {validateUsername, validationErrorHandler}
 
 router
   .post('/new-user',
-        validateUsername,
-        validationErrorHandler,
-        userController.newUser);
+    validateUsername,
+    validationErrorHandler,
+    userController.newUser);
 
 router
   .get('/users', userController.getUsers);

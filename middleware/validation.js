@@ -18,10 +18,10 @@ exports.validationErrorHandler = function(request, response, next) {
 
 exports.validateUsername = [
   body('username')
+    .notEmpty()
     .escape()
     .stripLow(true)
     .trim()
-    .isLength({min: 1})
     .isAlpha('en-US', {'ignore': '0123456789 -_'})
     .withMessage('Username should be a non-empty, alphanumeric (including spaces, dashes, and underscores) string.')
 ];

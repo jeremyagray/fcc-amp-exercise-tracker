@@ -84,26 +84,18 @@ async function start() {
     const name = 'fcc-amp-exercise-tracker';
     const version = '0.0.1';
 
-    app.listen(port, function () {
-      console.log(`${name}@${version} listening on port ${port}...`);
-      if (process.env.NODE_ENV ==='test') {
-        console.log(`${name}@${version} running tests...`);
-        // setTimeout(function () {
-        //   try {
-        //     runner.run();
-        //   } catch (error) {
-        //     console.log(`${name}@${version}:  some tests failed:`);
-        //     console.error(error);
-        //   }
-        // }, 1500);
-      }
-    });
-
-    // Export `app` for testing.
-    module.exports = app;
+    await app.listen(port);
+    console.log(`${name}@${version} listening on port ${port}...`);
+    if (process.env.NODE_ENV === 'test') {
+      console.log(`${name}@${version} ready to run tests...`);
+    }
   } catch (error) {
     console.error(error);
   }
 }
 
+// Start the server.
 start();
+
+// Export app for testing.
+module.exports = app;
