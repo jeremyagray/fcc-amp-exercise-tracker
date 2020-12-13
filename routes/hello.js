@@ -5,8 +5,11 @@ const router = express.Router();
 
 // Hello API endpoint. 
 router.get('', (request, response) => {
-  response.json({greeting: 'Hello from the FCC AMP Exercise Tracker API.'});
-  return;
+  return response
+    .status(200)
+    .json({
+      'greeting': 'Hello from the FCC AMP Exercise Tracker API.'
+    });
 });
 
 module.exports = router;

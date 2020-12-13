@@ -28,7 +28,6 @@ exports.newUser = async function(request, response) {
     .json({'error': 'server error'});
 };
 
-// No input to sanitize and validate.
 exports.getUsers = async function(request, response) {
 
   let user = Users();
