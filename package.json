@@ -39,12 +39,12 @@
     "url": "https://github.com/jeremyagray/fcc-amp-exercise-tracker"
   },
   "scripts": {
-    "cover": "nyc --reporter=text --reporter=html  mocha --recursive --exit -ui tdd tests/",
+    "cover": "nyc --reporter=text --reporter=html  mocha --recursive --exit tests",
     "docs": "jsdoc -c ./.jsdoc.json",
     "lint": "eslint '**/*.js'",
     "lint-fix": "eslint --fix '**/*.js'",
     "start": "nodemon server.js",
-    "test": "mocha --recursive --exit tests/"
+    "test": "mocha --recursive --exit tests"
   },
   "version": "0.0.1"
 }

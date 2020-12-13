@@ -4,6 +4,8 @@
 # Node/npm.
 .DS_Store
 .env
+.nyc_output
 build
+coverage
 node_modules
 npm-debug.log

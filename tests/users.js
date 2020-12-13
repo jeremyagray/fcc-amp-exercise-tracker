@@ -23,15 +23,19 @@ const invalidUsernames = [
   '',
   '<hackme>',
   '""',
-  '`~!@#$%^&*()_+-={}[]\|:;<>?,./'
+  '`~!@#$%^&*()_+-={}[]\\|:;<>?,./'
 ];
 
 const allUsernames = [...validUsernames, ...invalidUsernames];
 
 describe('POST /api/exercise/new-user', async function() {
   after('clear test database', async function() {
-    const users = Users();
-    await users.deleteMany({});
+    try {
+      const users = Users();
+      await users.deleteMany({});
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   it('valid usernames', async function() {
@@ -107,125 +111,105 @@ describe('POST /api/exercise/new-user', async function() {
 
   describe('malicious usernames',  async function() {
     it('username:  null', async function() {
-        try {
-          let response = await chai.request(server)
-            .post('/api/exercise/new-user')
-            .send({
-              'username': null
-            });
+      try {
+        let response = await chai.request(server)
+          .post('/api/exercise/new-user')
+          .send({
+            'username': null
+          });
 
-          expect(response).to.have.status(400);
-          expect(response).to.be.json;
-          expect(response.body).to.be.a('object');
-          expect(response.body).to.have.property('error');
-          expect(response.body)
-            .to.have.property('error').eql('invalid request');
-        } catch (error) {
-          console.log(error);
-          throw error;
-        }
+        expect(response).to.have.status(400);
+        expect(response).to.be.json;
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.have.property('error');
+        expect(response.body)
+          .to.have.property('error').eql('invalid request');
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
     });
 
     it('username:  undefined', async function() {
-        try {
-          let response = await chai.request(server)
-            .post('/api/exercise/new-user')
-            .send({
-              'username': undefined
-            });
+      try {
+        let response = await chai.request(server)
+          .post('/api/exercise/new-user')
+          .send({
+            'username': undefined
+          });
 
-          expect(response).to.have.status(400);
-          expect(response).to.be.json;
-          expect(response.body).to.be.a('object');
-          expect(response.body).to.have.property('error');
-          expect(response.body)
-            .to.have.property('error').eql('invalid request');
-        } catch (error) {
-          console.log(error);
-          throw error;
-        }
+        expect(response).to.have.status(400);
+        expect(response).to.be.json;
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.have.property('error');
+        expect(response.body)
+          .to.have.property('error').eql('invalid request');
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
     });
 
     it('username:  empty object', async function() {
-        try {
-          let response = await chai.request(server)
-            .post('/api/exercise/new-user')
-            .send({
-              'username': {}
-            });
+      try {
+        let response = await chai.request(server)
+          .post('/api/exercise/new-user')
+          .send({
+            'username': {}
+          });
 
-          expect(response).to.have.status(400);
-          expect(response).to.be.json;
-          expect(response.body).to.be.a('object');
-          expect(response.body).to.have.property('error');
-          expect(response.body)
-            .to.have.property('error').eql('invalid request');
-        } catch (error) {
-          console.log(error);
-          throw error;
-        }
+        expect(response).to.have.status(400);
+        expect(response).to.be.json;
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.have.property('error');
+        expect(response.body)
+          .to.have.property('error').eql('invalid request');
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
     });
 
     it('username:  object', async function() {
-        try {
-          let response = await chai.request(server)
-            .post('/api/exercise/new-user')
-            .send({
-              'username': {'foo': 'bar'}
-            });
+      try {
+        let response = await chai.request(server)
+          .post('/api/exercise/new-user')
+          .send({
+            'username': {'foo': 'bar'}
+          });
 
-          expect(response).to.have.status(400);
-          expect(response).to.be.json;
-          expect(response.body).to.be.a('object');
-          expect(response.body).to.have.property('error');
-          expect(response.body)
-            .to.have.property('error').eql('invalid request');
-        } catch (error) {
-          console.log(error);
-          throw error;
-        }
+        expect(response).to.have.status(400);
+        expect(response).to.be.json;
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.have.property('error');
+        expect(response.body)
+          .to.have.property('error').eql('invalid request');
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
     });
 
     it('username:  empty array', async function() {
-        try {
-          let response = await chai.request(server)
-            .post('/api/exercise/new-user')
-            .send({
-              'username': []
-            });
+      try {
+        let response = await chai.request(server)
+          .post('/api/exercise/new-user')
+          .send({
+            'username': []
+          });
 
-          expect(response).to.have.status(400);
-          expect(response).to.be.json;
-          expect(response.body).to.be.a('object');
-          expect(response.body).to.have.property('error');
-          expect(response.body)
-            .to.have.property('error').eql('invalid request');
-        } catch (error) {
-          console.log(error);
-          throw error;
-        }
+        expect(response).to.have.status(400);
+        expect(response).to.be.json;
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.have.property('error');
+        expect(response.body)
+          .to.have.property('error').eql('invalid request');
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
     });
 
-    // This actually works, creating user 'foo'...
-    // it('username:  array', async function() {
-    //     try {
-    //       let response = await chai.request(server)
-    //         .post('/api/exercise/new-user')
-    //         .send({
-    //           'username': ['foo', 'bar']
-    //         });
-
-    //       expect(response).to.have.status(400);
-    //       expect(response).to.be.json;
-    //       expect(response.body).to.be.a('object');
-    //       expect(response.body).to.have.property('error');
-    //       expect(response.body)
-    //         .to.have.property('error').eql('invalid request');
-    //     } catch (error) {
-    //       console.log(error);
-    //       throw error;
-    //     }
-    // });
   });
 });
 
@@ -248,7 +232,7 @@ describe('GET /api/exercise/users', async function() {
 
       // Get the hopefully empty user log.
       const response = await chai.request(server)
-            .get('/api/exercise/users');
+        .get('/api/exercise/users');
 
       expect(response).to.have.status(200);
       expect(response).to.be.json;
@@ -272,7 +256,7 @@ describe('GET /api/exercise/users', async function() {
 
       // Get the user log, with length hopefully equal to validUsernames.length.
       const response = await chai.request(server)
-            .get('/api/exercise/users');
+        .get('/api/exercise/users');
 
       expect(response).to.have.status(200);
       expect(response).to.be.json;
@@ -304,7 +288,7 @@ describe('GET /api/exercise/users', async function() {
 
       // Get the user log, with length hopefully equal to validUsernames.length.
       const response = await chai.request(server)
-            .get('/api/exercise/users');
+        .get('/api/exercise/users');
 
       expect(response).to.have.status(200);
       expect(response).to.be.json;
